@@ -4,27 +4,31 @@
 تليجرام بيبعت رقم الحساب المتأكد نفسه، فمحدش يقدر يأكد رقم مش بتاعه.
 اللي يدوس «مش عندي تليجرام» بيكمّل عادي، بس حسابه بيتراجع الأول قبل الهدية.
 
-كله ببلاش: بوت تليجرام + Cloudflare Workers (الخطة المجانية: 100,000 طلب في اليوم).
-
-## الخطوات (مرة واحدة)
+## الطريقة المجانية تمامًا: Google Apps Script (حساب جوجل بس — من غير كارت)
 
 1. **اعمل بوت جديد:** افتح [@BotFather](https://t.me/BotFather) ← `/newbot` ← اختار اسم ويوزرنيم (مثلاً `BotologySUVerifyBot`).
-   هياخدك على **توكن** — احتفظ بيه ومتبعتهوش لحد.
-2. **اعمل الـ Worker:** [dash.cloudflare.com](https://dash.cloudflare.com) ← Workers & Pages ← Create ← Worker ← سمّيه مثلاً `botology-tg` ← Deploy
-   ← Edit code ← امسح اللي فيه والصق محتوى `worker.js` ← Deploy.
-3. **المتغيرات:** Settings ← Variables and Secrets ← Add:
-   - `TG_TOKEN` (Secret) = توكن البوت
-   - `OTP_SECRET` (Secret) = أي كلام عشوائي طويل (مثلاً 40 حرف)
-4. **(مستحسن) حد للمحاولات:** Storage & Databases ← KV ← Create namespace، وبعدين في الـ Worker ← Settings ← Bindings ← Add ← KV namespace باسم `OTP_KV`.
-5. **اربط البوت:** افتح في المتصفح
-   `https://botology-tg.<اسمك>.workers.dev/setup?key=<OTP_SECRET>`
-   لازم يظهر `"ok":true`.
-6. **في الموقع** (فوق في الكود جنب `OTP_URL`):
+   هيديك **توكن** — متبعتهوش لحد.
+2. افتح [script.google.com](https://script.google.com) ← **New project** ← امسح اللي في `Code.gs` والصق محتوى `apps-script.gs` ← 💾 Save.
+3. ⚙️ **Project Settings** (العجلة على الشمال) ← تحت خالص **Script Properties** ← Add script property:
+   - `TG_TOKEN` = توكن البوت
+   - `OTP_SECRET` = أي كلام عشوائي طويل (مثلاً 40 حرف وأرقام)
+4. فوق على اليمين **Deploy ← New deployment** ← ⚙️ جنب Select type اختار **Web app**:
+   - Execute as: **Me**
+   - Who has access: **Anyone**
+   ← Deploy ← هيطلب صلاحيات: Authorize access ← اختار حسابك ← Advanced ← Go to project (unsafe) ← Allow
+   (ده طبيعي لأي سكريبت انت عامله بنفسك).
+   انسخ الـ **Web app URL** (بيبدأ بـ `https://script.google.com/macros/s/…/exec`).
+5. ارجع للكود ← من القايمة اللي فوق اختار الدالة **setup** ← ▶ **Run**. في الـ Execution log لازم يظهر `"ok":true`.
+6. ابعت لـ Claude **الـ Web app URL** و**يوزرنيم البوت** وهو يحطهم في الموقع، أو حطهم بنفسك:
    ```js
-   var TG_VERIFY_URL="https://botology-tg.<اسمك>.workers.dev";
+   var TG_VERIFY_URL="https://script.google.com/macros/s/…/exec";
    var TG_VERIFY_BOT="BotologySUVerifyBot";
    ```
-   أو ابعتهم لـ Claude يحطهم.
+
+> لو عدّلت الكود بعد كده: Deploy ← Manage deployments ← ✏️ ← Version: New version ← Deploy (عشان الرابط يفضل زي ما هو).
+
+## طريقة تانية: Cloudflare Worker
+`worker.js` — نفس الفكرة على Cloudflare Workers (الخطة المجانية). الأسهل والأضمن إنه ببلاش هو Google Apps Script اللي فوق.
 
 ## الحسابات المشكوك فيها
 - اللي ما أكدش رقمه ← حسابه بيبقى «قيد المراجعة» وبيوصلك تنبيه على تليجرام، وتوافق عليه من تبويب الحسابات.
