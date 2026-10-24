@@ -16,6 +16,12 @@
       "$id": {
         ".write": "!data.exists() && newData.exists()"
       }
+    },
+    "aic": {
+      "$k": {
+        ".read": true,
+        ".write": "!data.exists() && newData.child('a').isString() && newData.child('a').val().length < 12000 && $k.matches(/^[0-9a-f]{32}$/)"
+      }
     }
   }
 }
