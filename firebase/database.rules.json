@@ -36,6 +36,17 @@
         }
       }
     },
+    "trf": {
+      ".read": true,
+      "$sid": {
+        "$id": {
+          "$k": {
+            ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (!data.exists() && newData.isString() && newData.val().beginsWith('data:image/') && newData.val().length < 400000 && $k.matches(/^[12]_[0-9]{1,3}$/))"
+          },
+          ".write": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'"
+        }
+      }
+    },
     "trs": {
       "$sid": {
         "$id": {
