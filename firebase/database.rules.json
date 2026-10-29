@@ -7,7 +7,7 @@
       ".write": "auth != null && auth.uid === 'PUT_ADMIN_UID_HERE'",
       "$k": {
         ".read": "!($k.beginsWith('sus_') || $k.beginsWith('act_') || $k.beginsWith('rpt_') || $k.beginsWith('rsent_'))",
-        ".write": "$k.matches(/^[0-9a-z]{10,}$/) || $k.beginsWith('dev_') || $k.beginsWith('gdev_') || $k.beginsWith('act_') || (($k.beginsWith('pw_') || $k.beginsWith('ver_') || $k.beginsWith('sus_') || $k.beginsWith('rpt_')) && !data.exists() && newData.exists()) || ($k.beginsWith('crq_') && !data.exists() && newData.child('st').val() === 'p') || ($k.beginsWith('msg_') && data.exists() && newData.child('msg').val() === data.child('msg').val() && newData.child('t').val() === data.child('t').val()) || ($k.beginsWith('ses_') && data.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'deleted') || ($k.beginsWith('crb_') && newData.exists() && (data.child('bal').exists() ? newData.child('bal').val() <= data.child('bal').val() : newData.child('bal').val() <= 20) && (!data.child('gift').exists() || newData.child('gift').val() === data.child('gift').val()))"
+        ".write": "$k.matches(/^[0-9a-z]{10,}$/) || $k.beginsWith('dev_') || $k.beginsWith('gdev_') || $k.beginsWith('act_') || (($k.beginsWith('pw_') || $k.beginsWith('ver_') || $k.beginsWith('sus_') || $k.beginsWith('rpt_')) && !data.exists() && newData.exists()) || ($k.beginsWith('crq_') && !data.exists() && newData.child('st').val() === 'p') || ($k.beginsWith('msg_') && data.exists() && newData.child('msg').val() === data.child('msg').val() && newData.child('t').val() === data.child('t').val()) || ($k.beginsWith('ses_') && data.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'deleted') || ($k.beginsWith('crb_') && newData.exists() && (data.child('bal').exists() ? newData.child('bal').val() <= data.child('bal').val() : newData.child('bal').val() <= 20) && (!data.child('gift').exists() || newData.child('gift').val() === data.child('gift').val()) && newData.child('trn').val() === data.child('trn').val())"
       }
     },
     "reports": {
@@ -15,6 +15,32 @@
       ".write": "auth != null && auth.uid === 'PUT_ADMIN_UID_HERE'",
       "$id": {
         ".write": "!data.exists() && newData.exists()"
+      }
+    },
+    "tri": {
+      ".read": true,
+      "$sid": {
+        "$id": {
+          ".write": "(auth != null && auth.uid === 'PUT_ADMIN_UID_HERE') || (!data.exists() && newData.child('lec').isString() && newData.child('at').isNumber() && !newData.child('x').exists())",
+          "x": {
+            ".write": "!data.exists() && newData.val() === root.child('trs').child($sid).child($id).val()"
+          }
+        }
+      }
+    },
+    "trb": {
+      ".read": true,
+      "$sid": {
+        "$id": {
+          ".write": "(auth != null && auth.uid === 'PUT_ADMIN_UID_HERE') || (!data.exists() && newData.child('md').isString() && newData.child('md').val().length < 600000)"
+        }
+      }
+    },
+    "trs": {
+      "$sid": {
+        "$id": {
+          ".write": "(auth != null && auth.uid === 'PUT_ADMIN_UID_HERE') || (!data.exists() && newData.isString() && newData.val().length < 64)"
+        }
       }
     },
     "aic": {
