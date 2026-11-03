@@ -11,10 +11,10 @@
     },
     "su": {
       ".read": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('acc').val() === true) || (((auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) && (query.orderByKey === true && query.startAt === 'rpt_' && query.endAt.beginsWith('rpt_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('crq').val() === true) && ((query.orderByKey === true && query.startAt === 'crq_' && query.endAt.beginsWith('crq_')) || (query.orderByKey === true && query.startAt === 'crb_' && query.endAt.beginsWith('crb_'))))",
-      ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('acc').val() === true)",
+      ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2')",
       "$k": {
-        ".read": "!($k.beginsWith('sus_') || $k.beginsWith('act_') || $k.beginsWith('rpt_') || $k.beginsWith('rsent_'))",
-        ".write": "$k.matches(/^[0-9a-z]{10,}$/) || $k.beginsWith('dev_') || $k.beginsWith('gdev_') || $k.beginsWith('gfp_') || $k.beginsWith('act_') || (($k.beginsWith('pw_') || $k.beginsWith('ver_') || $k.beginsWith('sus_') || $k.beginsWith('rpt_')) && !data.exists() && newData.exists()) || ($k.beginsWith('crq_') && !data.exists() && newData.child('st').val() === 'p') || ($k.beginsWith('msg_') && data.exists() && newData.child('msg').val() === data.child('msg').val() && newData.child('t').val() === data.child('t').val()) || ($k.beginsWith('ses_') && data.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'deleted') || ($k.beginsWith('crb_') && newData.exists() && (data.child('bal').exists() ? newData.child('bal').val() <= data.child('bal').val() : newData.child('bal').val() <= 20) && (!data.child('gift').exists() || newData.child('gift').val() === data.child('gift').val()) && newData.child('trn').val() === data.child('trn').val()) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) && ($k.beginsWith('rpt_') || $k.beginsWith('msg_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('crq').val() === true) && ($k.beginsWith('crq_') || $k.beginsWith('crb_') || $k.beginsWith('pw_') || $k.beginsWith('dev_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && $k === 'cfg_trn')"
+        ".read": "!($k.beginsWith('sus_') || $k.beginsWith('act_') || $k.beginsWith('rpt_') || $k.beginsWith('rsent_')) || ($k.beginsWith('rpt_') && ((auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)))",
+        ".write": "$k.matches(/^[0-9a-z]{10,}$/) || $k.beginsWith('dev_') || $k.beginsWith('gdev_') || $k.beginsWith('gfp_') || $k.beginsWith('act_') || (($k.beginsWith('pw_') || $k.beginsWith('ver_') || $k.beginsWith('sus_') || $k.beginsWith('rpt_')) && !data.exists() && newData.exists()) || ($k.beginsWith('crq_') && !data.exists() && newData.child('st').val() === 'p') || ($k.beginsWith('msg_') && data.exists() && newData.child('msg').val() === data.child('msg').val() && newData.child('t').val() === data.child('t').val()) || ($k.beginsWith('ses_') && data.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'deleted') || ($k.beginsWith('crb_') && newData.exists() && (data.child('bal').exists() ? newData.child('bal').val() <= data.child('bal').val() : newData.child('bal').val() <= 2) && (!data.child('gift').exists() || newData.child('gift').val() === data.child('gift').val()) && newData.child('trn').val() === data.child('trn').val()) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) && ($k.beginsWith('rpt_') || $k.beginsWith('msg_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('crq').val() === true) && ($k.beginsWith('crq_') || $k.beginsWith('crb_') || $k.beginsWith('pw_') || $k.beginsWith('dev_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && $k === 'cfg_trn') || ((auth != null && root.child('adm').child(auth.uid).child('p').child('acc').val() === true) && ($k.beginsWith('ban_') || $k.beginsWith('ses_') || $k.beginsWith('msg_') || $k.beginsWith('pw_') || $k.beginsWith('dev_') || $k.beginsWith('sus_') || $k.beginsWith('ver_') || ($k.beginsWith('crb_') && (!newData.exists() || newData.child('bal').val() === data.child('bal').val()))))"
       }
     },
     "reports": {
@@ -28,7 +28,7 @@
       ".read": true,
       "$sid": {
         "$id": {
-          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.child('lec').isString() && newData.child('at').isNumber() && !newData.child('x').exists())",
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && (newData.exists() ? newData.child('au').val() === (data.exists() ? data.child('au').val() : auth.uid) : data.child('au').val() === auth.uid))) || (!data.exists() && newData.child('lec').isString() && newData.child('at').isNumber() && !newData.child('x').exists())",
           "x": {
             ".write": "!data.exists() && newData.val() === root.child('trs').child($sid).child($id).val()"
           }
@@ -39,7 +39,7 @@
       ".read": true,
       "$sid": {
         "$id": {
-          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.child('md').isString() && newData.child('md').val().length < 600000)"
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && (newData.exists() || root.child('tri').child($sid).child($id).child('au').val() === auth.uid))) || (!data.exists() && newData.child('md').isString() && newData.child('md').val().length < 600000)"
         }
       }
     },
@@ -48,16 +48,17 @@
       "$sid": {
         "$id": {
           "$k": {
-            ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.isString() && newData.val().beginsWith('data:image/') && newData.val().length < 400000 && $k.matches(/^([12]|w)_[0-9]{1,3}$/))"
+            ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && (newData.exists() || root.child('tri').child($sid).child($id).child('au').val() === auth.uid))) || (!data.exists() && newData.isString() && newData.val().beginsWith('data:image/') && newData.val().length < 400000 && $k.matches(/^([12]|w)_[0-9]{1,3}$/))"
           },
-          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true))"
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && (newData.exists() || root.child('tri').child($sid).child($id).child('au').val() === auth.uid)))"
         }
       }
     },
     "trs": {
       "$sid": {
         "$id": {
-          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.isString() && newData.val().length < 64)"
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && (newData.exists() || root.child('tri').child($sid).child($id).child('au').val() === auth.uid))) || (!data.exists() && newData.isString() && newData.val().length < 64)",
+          ".read": "(auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)"
         }
       }
     },
@@ -65,6 +66,13 @@
       "$k": {
         ".read": true,
         ".write": "!data.exists() && newData.child('a').isString() && newData.child('a').val().length < 12000 && $k.matches(/^[0-9a-f]{32}$/)"
+      }
+    },
+    "alog": {
+      ".read": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
+      ".write": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
+      "$id": {
+        ".write": "!data.exists() && newData.child('u').val() === auth.uid && root.child('adm').child(auth.uid).child('p').exists()"
       }
     }
   }
