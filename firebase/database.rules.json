@@ -2,17 +2,24 @@
   "rules": {
     ".read": false,
     ".write": false,
-    "su": {
+    "adm": {
       ".read": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
       ".write": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid"
+      }
+    },
+    "su": {
+      ".read": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('acc').val() === true) || (((auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) && (query.orderByKey === true && query.startAt === 'rpt_' && query.endAt.beginsWith('rpt_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('crq').val() === true) && ((query.orderByKey === true && query.startAt === 'crq_' && query.endAt.beginsWith('crq_')) || (query.orderByKey === true && query.startAt === 'crb_' && query.endAt.beginsWith('crb_'))))",
+      ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('acc').val() === true)",
       "$k": {
         ".read": "!($k.beginsWith('sus_') || $k.beginsWith('act_') || $k.beginsWith('rpt_') || $k.beginsWith('rsent_'))",
-        ".write": "$k.matches(/^[0-9a-z]{10,}$/) || $k.beginsWith('dev_') || $k.beginsWith('gdev_') || $k.beginsWith('gfp_') || $k.beginsWith('act_') || (($k.beginsWith('pw_') || $k.beginsWith('ver_') || $k.beginsWith('sus_') || $k.beginsWith('rpt_')) && !data.exists() && newData.exists()) || ($k.beginsWith('crq_') && !data.exists() && newData.child('st').val() === 'p') || ($k.beginsWith('msg_') && data.exists() && newData.child('msg').val() === data.child('msg').val() && newData.child('t').val() === data.child('t').val()) || ($k.beginsWith('ses_') && data.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'deleted') || ($k.beginsWith('crb_') && newData.exists() && (data.child('bal').exists() ? newData.child('bal').val() <= data.child('bal').val() : newData.child('bal').val() <= 20) && (!data.child('gift').exists() || newData.child('gift').val() === data.child('gift').val()) && newData.child('trn').val() === data.child('trn').val())"
+        ".write": "$k.matches(/^[0-9a-z]{10,}$/) || $k.beginsWith('dev_') || $k.beginsWith('gdev_') || $k.beginsWith('gfp_') || $k.beginsWith('act_') || (($k.beginsWith('pw_') || $k.beginsWith('ver_') || $k.beginsWith('sus_') || $k.beginsWith('rpt_')) && !data.exists() && newData.exists()) || ($k.beginsWith('crq_') && !data.exists() && newData.child('st').val() === 'p') || ($k.beginsWith('msg_') && data.exists() && newData.child('msg').val() === data.child('msg').val() && newData.child('t').val() === data.child('t').val()) || ($k.beginsWith('ses_') && data.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'banned' && newData.child('sid').val() !== 'deleted') || ($k.beginsWith('crb_') && newData.exists() && (data.child('bal').exists() ? newData.child('bal').val() <= data.child('bal').val() : newData.child('bal').val() <= 20) && (!data.child('gift').exists() || newData.child('gift').val() === data.child('gift').val()) && newData.child('trn').val() === data.child('trn').val()) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) && ($k.beginsWith('rpt_') || $k.beginsWith('msg_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('crq').val() === true) && ($k.beginsWith('crq_') || $k.beginsWith('crb_') || $k.beginsWith('pw_') || $k.beginsWith('dev_'))) || ((auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true) && $k === 'cfg_trn')"
       }
     },
     "reports": {
-      ".read": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
-      ".write": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
+      ".read": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true) || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)",
+      ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('rep').val() === true)",
       "$id": {
         ".write": "!data.exists() && newData.exists()"
       }
@@ -21,7 +28,7 @@
       ".read": true,
       "$sid": {
         "$id": {
-          ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (!data.exists() && newData.child('lec').isString() && newData.child('at').isNumber() && !newData.child('x').exists())",
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.child('lec').isString() && newData.child('at').isNumber() && !newData.child('x').exists())",
           "x": {
             ".write": "!data.exists() && newData.val() === root.child('trs').child($sid).child($id).val()"
           }
@@ -32,7 +39,7 @@
       ".read": true,
       "$sid": {
         "$id": {
-          ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (!data.exists() && newData.child('md').isString() && newData.child('md').val().length < 600000)"
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.child('md').isString() && newData.child('md').val().length < 600000)"
         }
       }
     },
@@ -41,16 +48,16 @@
       "$sid": {
         "$id": {
           "$k": {
-            ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (!data.exists() && newData.isString() && newData.val().beginsWith('data:image/') && newData.val().length < 400000 && $k.matches(/^([12]|w)_[0-9]{1,3}$/))"
+            ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.isString() && newData.val().beginsWith('data:image/') && newData.val().length < 400000 && $k.matches(/^([12]|w)_[0-9]{1,3}$/))"
           },
-          ".write": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'"
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true))"
         }
       }
     },
     "trs": {
       "$sid": {
         "$id": {
-          ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (!data.exists() && newData.isString() && newData.val().length < 64)"
+          ".write": "((auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('trn').val() === true)) || (!data.exists() && newData.isString() && newData.val().length < 64)"
         }
       }
     },
