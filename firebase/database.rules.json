@@ -68,6 +68,12 @@
         ".write": "!data.exists() && newData.child('a').isString() && newData.child('a').val().length < 12000 && $k.matches(/^[0-9a-f]{32}$/)"
       }
     },
+    "qx": {
+      ".read": true,
+      "$sid": {
+        ".write": "(auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2') || (auth != null && root.child('adm').child(auth.uid).child('p').child('qs').val() === true)"
+      }
+    },
     "alog": {
       ".read": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
       ".write": "auth != null && auth.uid === 'qHmsZKgB85XcM6H51ZRTiDEjf3j2'",
