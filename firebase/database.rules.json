@@ -68,6 +68,18 @@
         ".write": "!data.exists() && newData.child('a').isString() && newData.child('a').val().length < 12000 && $k.matches(/^[0-9a-f]{32}$/)"
       }
     },
+    "lb": {
+      ".read": true,
+      ".indexOn": ["y"],
+      "$k": {
+        ".write": "$k.matches(/^[0-9a-z]{10,}$/)",
+        ".validate": "newData.hasChildren(['n','y','t']) && newData.child('n').isString() && newData.child('n').val().length <= 24 && newData.child('y').isNumber() && newData.child('y').val() >= 0 && newData.child('y').val() <= 6 && newData.child('t').isNumber()",
+        "u": { ".validate": "newData.isString() && newData.val().length <= 20" },
+        "s": { "$sid": { ".validate": "$sid.matches(/^[a-z0-9]{2,8}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() < 6000" } },
+        "n": { ".validate": true }, "y": { ".validate": true }, "t": { ".validate": true },
+        "$other": { ".validate": false }
+      }
+    },
     "qx": {
       ".read": true,
       "$sid": {
