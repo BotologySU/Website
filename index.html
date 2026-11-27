@@ -109,7 +109,7 @@
  '#pwaAd .ph .bt{display:inline-block;margin-top:5px;padding:2px 9px;border-radius:6px;background:#ff5a3c;color:#fff;animation:pwaH 1.4s ease-in-out infinite}'+
  '#pwaAd .ph .home{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:10px;align-content:start}#pwaAd .ph .home span{aspect-ratio:1;border-radius:7px;background:#dcdce2}'+
  '#pwaAd .ph .home img{width:100%;border-radius:7px;box-shadow:0 0 0 3px rgba(255,90,60,.45);animation:pwaH 1.4s ease-in-out infinite}'+
- '#pwaAd .g .hd{padding:14px 20px 12px}#pwaAd .g .lg{width:52px;height:52px;border-radius:14px;margin-bottom:6px}#pwaAd .g h3{font-size:17px}#pwaAd .g .hd p{display:none}#pwaAd .cp{margin-top:10px;width:100%;min-height:46px;border:2px solid #ff5a3c;border-radius:14px;background:none;color:#ff5a3c;font:700 15px "Readex Pro",system-ui,sans-serif;cursor:pointer}'+
+ '#pwaAd .g .hd{padding:14px 20px 12px}#pwaAd .g .lg{width:52px;height:52px;border-radius:14px;margin-bottom:6px}#pwaAd .g h3{font-size:17px}#pwaAd .g .hd p{display:none}#pwaAd svg.pl{width:1.15em;height:1.15em;vertical-align:-.2em;flex:none}#pwaAd .go svg.pl[fill]{color:#fff}#pwaAd .cp{margin-top:10px;width:100%;min-height:46px;border:2px solid #ff5a3c;border-radius:14px;background:none;color:#ff5a3c;font:700 15px "Readex Pro",system-ui,sans-serif;cursor:pointer}'+
  '#pwaAd .bk{border:0;background:none;color:#ff5a3c;font:600 14px "Readex Pro",system-ui,sans-serif;cursor:pointer;padding:6px 0;margin-bottom:4px}'+
  '@keyframes pwaF{from{opacity:0}}@keyframes pwaU{from{transform:translateY(40px);opacity:0}}@keyframes pwaP{0%,100%{box-shadow:0 8px 20px rgba(255,90,60,.35)}50%{box-shadow:0 8px 30px rgba(255,90,60,.6)}}@keyframes pwaH{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}'+
  '@media (prefers-color-scheme:dark){#pwaAd .bx{background:#1c1c1f;color:#f2f2f4}#pwaAd ul.f i{background:#3a221d}#pwaAd .stp{border-color:#333}#pwaAd .tx b{color:#ff8d6e}}'+
@@ -119,27 +119,27 @@
   plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></svg>',
   dots:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="19" r="2.2"/></svg>',
   inst:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 7v6M9 10l3 3 3-3"/><path d="M8 21h8"/></svg>'};
- var LOGO="icons/icon-192.png";
+ var LOGO="icons/icon-192.png",LA='<svg class="pl" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>',LN='<svg class="pl" viewBox="4 5 16 13" aria-hidden="true"><path fill="#3ddc84" d="M5 17a7 7 0 0 1 14 0z"/><path stroke="#3ddc84" stroke-width="1.3" stroke-linecap="round" d="M8.3 11.4 6.6 8.6M15.7 11.4l1.7-2.8"/><circle cx="9.3" cy="14" r=".9" fill="#fff"/><circle cx="14.7" cy="14" r=".9" fill="#fff"/></svg>',LW='<svg class="pl" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0078d4" d="M2 2h9.5v9.5H2zM12.5 2H22v9.5h-9.5zM2 12.5h9.5V22H2zM12.5 12.5H22V22h-9.5z"/></svg>';
  var step=function(n,ph,tx){return '<div class="stp"><span class="n">'+n+'</span><div class="ph" aria-hidden="true">'+ph+'</div><div class="tx">'+tx+'</div></div>'};
  var home='<div class="home"><span></span><span></span><img src="'+LOGO+'" alt=""><span></span><span></span><span></span><span></span><span></span></div>';
 
  /* الشرح بالصور لكل جهاز */
  var G={
-  ios:{t:"🍎 على الآيفون والآيباد",s:(safari?"":'<p style="margin:0 0 8px;background:#fff4e5;color:#8a5300;border-radius:12px;padding:8px 12px">⚠️ الأول افتح المنصة في متصفح <b>Safari</b> (انسخ اللينك تحت والزقه في سفاري).</p>')+
+  ios:{t:LA+" على الآيفون والآيباد",s:(safari?"":'<p style="margin:0 0 8px;background:#fff4e5;color:#8a5300;border-radius:12px;padding:8px 12px">⚠️ الأول افتح المنصة في متصفح <b>Safari</b> (انسخ اللينك تحت والزقه في سفاري).</p>')+
    step(1,'<div class="bar t"><span class="url"></span></div><div class="bar b"><span>‹</span><span>›</span><span class="hl" style="width:20px;height:18px">'+I.share+'</span><span>▢</span></div>',"دوس على زرار <b>المشاركة</b> اللي تحت في نص الشاشة (على الآيباد فوق).")+
    step(2,'<div class="sheet"><div class="row"><span>Copy</span><span>⧉</span></div><div class="row on"><span>إضافة إلى الشاشة الرئيسية</span>'+I.plus+'</div><div class="row"><span>Print</span><span>⎙</span></div></div>',"انزل لتحت شوية واختار <b>«إضافة إلى الشاشة الرئيسية»</b> <small dir=ltr style=display:inline-block>(Add to Home Screen)</small>.")+
    step(3,'<div class="dlg"><img src="'+LOGO+'" alt=""> Botology SU<br><span class="bt">إضافة</span></div>',"دوس <b>«إضافة»</b> فوق على اليمين <small dir=ltr style=display:inline-block>(Add)</small>.")+
    step(4,home,"خلاص! هتلاقي أيقونة <b>Botology SU</b> على الشاشة — افتح منها على طول.")},
-  android:{t:"📱 على أندرويد",s:
+  android:{t:LN+" على أندرويد",s:
    step(1,'<div class="bar t"><span style="opacity:.5">⌂</span><span class="url"></span><span class="hl" style="width:16px;height:18px">'+I.dots+'</span></div>',"في <b>كروم</b> دوس على <b>النقط التلاتة</b> فوق.")+
    step(2,'<div class="sheet" style="top:6px;bottom:auto"><div class="row"><span>سجل التصفح</span></div><div class="row on"><span>تثبيت التطبيق</span></div><div class="row"><span>الإعدادات</span></div></div>',"اختار <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b>.")+
    step(3,'<div class="dlg"><img src="'+LOGO+'" alt=""> Botology SU<br><span class="bt">تثبيت</span></div>',"دوس <b>«تثبيت»</b>.")+
    step(4,home,"هتلاقي أيقونة <b>Botology SU</b> على الشاشة الرئيسية.")},
-  desk:{t:"💻 على الكمبيوتر (ويندوز)",s:
+  desk:{t:LW+" على الكمبيوتر (ويندوز)",s:
    step(1,'<div class="bar t"><span class="url"></span><span class="hl" style="width:20px;height:18px">'+I.inst+'</span><span>⋯</span></div>',"في <b>Edge</b> أو <b>Chrome</b>: دوس على أيقونة التثبيت في آخر شريط العنوان فوق (أو من القايمة ⋯ ← التطبيقات ← تثبيت).")+
    step(2,'<div class="dlg"><img src="'+LOGO+'" alt=""> Botology SU<br><span class="bt">تثبيت</span></div>',"دوس <b>«تثبيت»</b>.")+
    step(3,'<div class="dlg" style="top:8px;text-align:right;font-size:8.5px">☑ شريط المهام<br>☑ <span style="color:#ff5a3c">سطح المكتب</span><br><span class="bt" style="margin-top:3px">سماح</span></div>',(edge?"في Edge هتظهر نافذة صغيرة: علّم على <b>«إنشاء اختصار على سطح المكتب»</b> و«تثبيت في شريط المهام» ودوس <b>«سماح»</b>.":"المنصة هتفتح في نافذة لوحدها، وهتلاقي أيقونتها في قايمة ابدأ وعلى سطح المكتب."))},
-  other:{t:"🌐 افتح المنصة في متصفح تاني",s:'<p style="margin:0 0 6px">'+(inApp?"إنت فاتح اللينك من جوه تطبيق (فيسبوك / تليجرام / غيره) — ومن هنا مينفعش التثبيت.":"المتصفح ده مش بيدعم تثبيت المنصة كتطبيق.")+' افتح اللينك في:</p><p style="margin:0">📱 أندرويد: <b>Chrome</b><br>🍎 آيفون: <b>Safari</b><br>💻 كمبيوتر: <b>Edge</b> أو <b>Chrome</b></p>'}
+  other:{t:"🌐 افتح المنصة في متصفح تاني",s:'<p style="margin:0 0 6px">'+(inApp?"إنت فاتح اللينك من جوه تطبيق (فيسبوك / تليجرام / غيره) — ومن هنا مينفعش التثبيت.":"المتصفح ده مش بيدعم تثبيت المنصة كتطبيق.")+' افتح اللينك في:</p><p style="margin:0">'+LN+' أندرويد: <b>Chrome</b><br>'+LA+' آيفون: <b>Safari</b><br>'+LW+' كمبيوتر: <b>Edge</b> أو <b>Chrome</b></p>'}
  };
  var kind=ios?"ios":inApp||(desk&&!deskOK)?"other":android?"android":"desk";
 
@@ -151,7 +151,7 @@
   b.querySelector(".cp").onclick=function(){var u=location.origin+location.pathname,t=this;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){t.textContent="✅ اتنسخ — الزقه في المتصفح"}).catch(function(){prompt("انسخ اللينك:",u)})};
   b.querySelector("[data-more]").onclick=function(){location.href="install/"}}
  function main(){var b=document.querySelector("#pwaAd .bd");document.querySelector("#pwaAd .bx").classList.remove("g");
-  var lbl=kind==="ios"?"🍎 إزاي أنزّله على الآيفون؟":kind==="other"?"🌐 إزاي أنزّله؟":desk?"💻 نزّل برنامج المنصة":"📲 نزّل التطبيق";
+  var lbl=kind==="ios"?LA+" إزاي أنزّله على الآيفون؟":kind==="other"?"🌐 إزاي أنزّله؟":desk?LW+" نزّل برنامج المنصة":LN+" نزّل التطبيق";
   b.innerHTML='<ul class="f"><li><i>⚡</i><span>يفتح بضغطة من أيقونة على شاشتك</span></li><li><i>🪟</i><span>نافذة لوحده من غير زحمة المتصفح</span></li><li><i>🔄</i><span>كل تحديث بيوصلك لوحده</span></li></ul>'+
    '<button class="go" type="button">'+lbl+'</button><button class="lt" type="button">مش دلوقتي</button><p class="sf">🔒 آمن — مش ملف تحميل، ده الموقع الرسمي نفسه في أيقونة</p>';
   b.querySelector(".go").onclick=function(){
