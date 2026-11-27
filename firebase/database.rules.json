@@ -73,11 +73,12 @@
       ".indexOn": ["y"],
       "$k": {
         ".write": "$k.matches(/^[0-9a-z]{10,}$/)",
-        ".validate": "newData.hasChildren(['n','y','t']) && newData.child('n').isString() && newData.child('n').val().length <= 24 && newData.child('y').isNumber() && newData.child('y').val() >= 0 && newData.child('y').val() <= 6 && newData.child('t').isNumber()",
+        ".validate": "newData.hasChildren(['n','y','t']) && newData.child('n').isString() && newData.child('n').val().length <= 40 && newData.child('y').isNumber() && newData.child('y').val() >= 0 && newData.child('y').val() <= 6 && newData.child('t').isNumber()",
         "u": { ".validate": "newData.isString() && newData.val().length <= 20" },
         "s": { "$sid": { ".validate": "$sid.matches(/^[a-z0-9]{2,8}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() < 6000" } },
+        "a": { "$sid": { ".validate": "$sid.matches(/^[a-z0-9]{2,8}$/) && newData.isNumber() && newData.val() >= 0 && newData.val() < 6000" } },
         "n": { ".validate": true }, "y": { ".validate": true }, "t": { ".validate": true },
-        "p": { "d": { ".validate": "newData.isString() && newData.val().length <= 10" }, "w": { ".validate": "newData.isString() && newData.val().length <= 10" }, "m": { ".validate": "newData.isString() && newData.val().length <= 10" }, "y": { ".validate": "newData.isString() && newData.val().length <= 10" }, "$b": { ".validate": "$b === 'sd' || $b === 'sw' || $b === 'sm' || $b === 'sy'", "$sid": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 6000 && $sid.matches(/^[a-z0-9]{2,8}$/)" } } },
+        "p": { "d": { ".validate": "newData.isString() && newData.val().length <= 10" }, "w": { ".validate": "newData.isString() && newData.val().length <= 10" }, "m": { ".validate": "newData.isString() && newData.val().length <= 10" }, "y": { ".validate": "newData.isString() && newData.val().length <= 10" }, "$b": { ".validate": "$b === 'sd' || $b === 'sw' || $b === 'sm' || $b === 'sy' || $b === 'ad' || $b === 'aw' || $b === 'am' || $b === 'ay'", "$sid": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() < 6000 && $sid.matches(/^[a-z0-9]{2,8}$/)" } } },
         "$other": { ".validate": false }
       }
     },
