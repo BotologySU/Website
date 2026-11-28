@@ -4,7 +4,7 @@
      فمفيش بيانات حساب أو رصيد أو توكن بتتحفظ هنا، والخروج أو تغيير الحساب مش بيسيب حاجة وراه.
    - الصفحة نفسها "النت الأول": أول ما يكون فيه نت بيجيب آخر نسخة، والنسخة المخزّنة للطوارئ بس.
    - VERSION بيتغيّر تلقائيًا مع كل نسخة جديدة من الموقع (pack3.js) → المتصفح يعرف إن فيه تحديث ويظهر زرار «حدّث». */
-const VERSION = "0b51b7142a";
+const VERSION = "990fddb2d4";
 const CACHE = "botology-" + VERSION;
 const STATIC = "botology-static-v1"; /* أيقونات + صور (أساميها ثابتة بالمحتوى) — بتفضل بين النسخ */
 const SHELL = ["./", "./install/", "./manifest.webmanifest", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png", "./icons/favicon-32.png"];
